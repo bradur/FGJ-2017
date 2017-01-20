@@ -28,11 +28,11 @@ public class PlayerController : MonoBehaviour {
         rb2d.velocity = new Vector3(rb2d.velocity.x, verticalAxis * speedForward, 0f);*/
         if (Input.GetKey(KeyManager.main.GetKey(Action.MoveUp)))
         {
-            rb2d.AddForce(new Vector3(0f, verticalSpeed, 0f));
+            rb2d.AddForce(new Vector3(0, verticalSpeed, 0f));
         }
         else if (Input.GetKey(KeyManager.main.GetKey(Action.MoveDown)))
         {
-            rb2d.AddForce(new Vector3(0f, -verticalSpeed, 0f));
+            rb2d.AddForce(new Vector3(0, -verticalSpeed, 0f));
         }
     }
 }

@@ -5,7 +5,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class WaveMovement : MonoBehaviour {
+public class PlayerHorizontalMovement : MonoBehaviour {
 
     [SerializeField]
     private Rigidbody2D rb2d;
@@ -14,7 +14,7 @@ public class WaveMovement : MonoBehaviour {
     [Range(0.2f, 2f)]
     private float horizontalSpeed = 1f;
 
-    private bool startMoving = false;
+    private bool isMoving = false;
     private Vector3 originalPosition;
 
     void Start () {
@@ -24,19 +24,20 @@ public class WaveMovement : MonoBehaviour {
 
     public void StartMoving()
     {
-        startMoving = true;
+        isMoving = true;
     }
 
     void Update () {
-        if (startMoving)
+        if (isMoving)
         {
-            rb2d.velocity = new Vector3(-horizontalSpeed, 0f, 0f);
-            startMoving = false;
+            rb2d.velocity = new Vector3(horizontalSpeed, rb2d.velocity.y, 0f);
         }
+        // DEBUG
         if (Input.GetKey(KeyManager.main.GetKey(Action.ResetWaveDebug)))
         {
             transform.position = originalPosition;
             ScoreManager.main.ResetScore();
+            GetComponentInChildren<TrailRenderer>().Clear();
         }
     }
 }
