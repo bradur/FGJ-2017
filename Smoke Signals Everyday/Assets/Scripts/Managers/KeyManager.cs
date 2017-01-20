@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 public enum Action
 {
-    None
+    None,
+    MoveUp
 }
 
 public class KeyManager : MonoBehaviour {
