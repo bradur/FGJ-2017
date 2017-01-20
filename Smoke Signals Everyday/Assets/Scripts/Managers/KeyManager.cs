@@ -4,7 +4,9 @@ using System.Collections.Generic;
 public enum Action
 {
     None,
-    MoveUp
+    MoveUp,
+    MoveDown,
+    ResetWaveDebug
 }
 
 public class KeyManager : MonoBehaviour {
