@@ -11,6 +11,9 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private Transform puffPlace;
 
+    [SerializeField]
+    private AnimPuff animPuff;
+
     private List<PuffWave> levelObjs;
 
     Level currentLevel = null;
@@ -29,6 +32,7 @@ public class LevelManager : MonoBehaviour {
     void Start () {
         levelObjs = new List<PuffWave>();
         puffSprite = puffPlace.GetComponent<SpriteRenderer>();
+        animPuff = Resources.Load<AnimPuff>("AnimPuff");
     }
 	
 	// Update is called once per frame
@@ -42,13 +46,23 @@ public class LevelManager : MonoBehaviour {
 
     public void NextObject()
     {
+        if (currentPuffWave != null)
+        {
+            //previous puff sprite
+            AnimPuff anim = Instantiate(animPuff, puffPlace) as AnimPuff;
+
+            SpriteRenderer puffRenderer = anim.GetComponent<SpriteRenderer>();
+            initAnimPuff(anim, puffRenderer, currentPuffWave.Puff.Sprite);
+            anim.GetComponent<Animator>().SetTrigger("PuffIdle");
+            currentPuffWave.SetAnim(anim);
+        }
+
         if (levelObjs != null && levelObjs.Count > 0)
         {
             currentPuffWave = levelObjs[0];
             levelObjs.RemoveAt(0);
             currentPuffWave.IsMoving = true;
             lastPuffWave = false;
-            initPuffPlace(currentPuffWave.Puff.Sprite);
         }
         else
         {
@@ -56,15 +70,15 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    private void initPuffPlace(Sprite sprite)
+    private void initAnimPuff(AnimPuff anim, SpriteRenderer puffRenderer, Sprite sprite)
     {
-        puffSprite.sprite = sprite;
-        SetPuffAlpha(0f);
+        puffRenderer.sprite = sprite;
+        SetPuffAlpha(puffRenderer, 0f);
     }
 
-    public void SetPuffAlpha(float alpha)
+    public void SetPuffAlpha(SpriteRenderer puffRenderer, float alpha)
     {
-        puffSprite.color = new Color(puffSprite.color.r, puffSprite.color.g, puffSprite.color.b, alpha);
+        animPuff.GetComponent<SpriteRenderer>().color = new Color(puffRenderer.color.r, puffRenderer.color.g, puffRenderer.color.b, alpha);
     }
 
     public void LoadNextLevel()
@@ -98,7 +112,8 @@ public class LevelManager : MonoBehaviour {
 
     public void DeletedPuffWave()
     {
-        if(lastPuffWave)
+        //puffPlace.GetComponent<Animator>().SetTrigger("PuffFadeOut");
+        if (lastPuffWave)
         {
             LoadNextLevel();
         }

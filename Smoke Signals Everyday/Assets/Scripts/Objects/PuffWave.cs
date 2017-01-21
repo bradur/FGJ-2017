@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class PuffWave : MonoBehaviour
     public Puff Puff;
     [SerializeField]
     public Wave Wave;
+    [SerializeField]
+    public AnimPuff AnimPuff;
 
     [SerializeField]
     private Wave littleWave;
@@ -23,6 +26,12 @@ public class PuffWave : MonoBehaviour
 
     [SerializeField]
     private bool isMoving = false;
+
+    public void PuffAnimOut()
+    {
+        AnimPuff.GetComponent<Animator>().SetTrigger("PuffFadeOut");
+    }
+
     public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
 
     // Use this for initialization
@@ -40,5 +49,10 @@ public class PuffWave : MonoBehaviour
         {
             rb2d.velocity = new Vector3(0f, 0f, 0f);
         }
+    }
+
+    public void SetAnim(AnimPuff anim)
+    {
+        AnimPuff = anim;
     }
 }
