@@ -71,6 +71,8 @@ public class LevelManager : MonoBehaviour {
         Debug.Log(currentLevel.levelNumber);
         levels.RemoveAt(0);
         levelObjs.AddRange(currentLevel.PuffWaveIds.Select(x => PuffPool.main.GetPuff(x)));
+        UIManager.main.SetLevel(currentLevel.dialog, new List<PuffWaveStuct>(currentLevel.PuffWaveIds.Select(x => PuffPool.main.GetPuffStuct(x))));
+
         for(int i = 0; i < levelObjs.Count; i++)
         {
             var x = levelObjs[i].transform.position.x;

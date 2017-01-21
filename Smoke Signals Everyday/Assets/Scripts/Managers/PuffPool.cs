@@ -7,6 +7,7 @@ public class PuffPool : MonoBehaviour {
 
     [SerializeField]
     private List<PuffWaveStuct> differentPuffs;
+    public List<PuffWaveStuct> DifferentPuffs { get { return differentPuffs; } }
     [SerializeField]
     private PuffWave puff;
     [SerializeField]
@@ -57,11 +58,22 @@ public class PuffPool : MonoBehaviour {
     {
         PuffWaveStuct pw = GetPW(pwName);
         PuffWave newPuff = GetNewPuff();
-        newPuff.Puff = pw.PuffWave.Puff;
-        newPuff.Wave = pw.PuffWave.Wave;
-
+        newPuff.Puff.Sprite = pw.puffSprite;
+        newPuff.Wave = pw.wave;
 
         return newPuff;
+    }
+
+    public PuffWaveStuct GetPuffStuct(PuffWaveID pwName) 
+    {
+        foreach(PuffWaveStuct pws in differentPuffs)
+        {
+            if(pws.ID == pwName)
+            {
+                return pws;
+            }
+        }
+        return null;
     }
 
     public void DestroyPuff(PuffWave deletedPuff)
@@ -87,7 +99,8 @@ public class PuffPool : MonoBehaviour {
 public class PuffWaveStuct : System.Object
 {
     public PuffWaveID ID;
-    public PuffWave PuffWave;
+    public Wave wave;
+    public Sprite puffSprite;
 }
 
 public enum PuffWaveID
