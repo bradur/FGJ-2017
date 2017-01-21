@@ -63,13 +63,16 @@ public class LevelManager : MonoBehaviour {
         currentLevel = levels[0];
         Debug.Log("Level changed to: "+ currentLevel.levelNumber);
         levels.RemoveAt(0);
-        levelObjs.AddRange(currentLevel.PuffWaveIds.Select(x => PuffPool.main.GetPuff(x)));
+
+        //var x = levelObjs[i].transform.position.x;
+        Vector3 playerPos = WorldManager.main.GetPlayerPos();
+        Vector3 initPos = new Vector3(playerPos.x + 15f, 0, 0);
+        levelObjs.AddRange(currentLevel.PuffWaveIds.Select(x => PuffPool.main.GetPuff(x, initPos)));
+
         UIManager.main.SetLevel(currentLevel.dialog, new List<PuffWaveStuct>(currentLevel.PuffWaveIds.Select(x => PuffPool.main.GetPuffStuct(x))));
 
         for(int i = 0; i < levelObjs.Count; i++)
         {
-            var x = levelObjs[i].transform.position.x;
-            Vector3 playerPos = WorldManager.main.GetPlayerPos();
             levelObjs[i].transform.position = new Vector3(playerPos.x + 15f, 0, 0);
         }
 

@@ -41,12 +41,13 @@ public class PuffPool : MonoBehaviour {
         }
     }
     
-    public PuffWave GetNewPuff()
+    public PuffWave GetNewPuff(Vector3 initPos)
     {
         if(pool.Count > 0)
         {
             PuffWave tempPuff = pool[0];
             pool.RemoveAt(0);
+            tempPuff.transform.position = initPos;
             tempPuff.gameObject.SetActive(true);
             return tempPuff;
         }
@@ -54,13 +55,15 @@ public class PuffPool : MonoBehaviour {
         return null;
     }
 
-    public PuffWave GetPuff(PuffWaveID pwName)
+    public PuffWave GetPuff(PuffWaveID pwName, Vector3 initPos)
     {
         PuffWaveStuct pw = GetPW(pwName);
-        PuffWave newPuff = GetNewPuff();
+        PuffWave newPuff = GetNewPuff(initPos);
+            
         newPuff.Puff.Sprite = pw.puffSprite;
+
         Wave wave = Instantiate(pw.wave);
-        wave.transform.SetParent(newPuff.Wave.transform, true);
+        wave.transform.SetParent(newPuff.Wave.transform, false);
         wave.GetComponent<WaveCollision>().Animator = newPuff.Wave.GetComponent<Animator>();
         newPuff.LittleWave = wave;
         //newPuff.Wave = wave;
