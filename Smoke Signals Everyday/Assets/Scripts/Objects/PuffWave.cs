@@ -9,7 +9,7 @@ public class PuffWave : MonoBehaviour
     private Rigidbody2D rb2d;
 
     [SerializeField]
-    [Range(0.2f, 2f)]
+    [Range(-10f, 0.5f)]
     private float horizontalSpeed = 1f;
 
     [SerializeField]
@@ -19,6 +19,7 @@ public class PuffWave : MonoBehaviour
 
     [SerializeField]
     private bool isMoving = false;
+    public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +32,10 @@ public class PuffWave : MonoBehaviour
         if (isMoving)
         {
             rb2d.velocity = new Vector3(horizontalSpeed, rb2d.velocity.y, 0f);
+        }
+        else
+        {
+            rb2d.velocity = new Vector3(0f, 0f, 0f);
         }
     }
 }
