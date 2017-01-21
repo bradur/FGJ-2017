@@ -13,7 +13,7 @@ public class PuffPool : MonoBehaviour {
     private Transform puffContainer;
 
     private List<PuffWave> pool;
-    private int maxPool = 100;
+    private int maxPool = 25;
     
     public static PuffPool main;
 
@@ -29,10 +29,12 @@ public class PuffPool : MonoBehaviour {
 
     private void Init()
     {
-        differentPuffs = new List<PuffWaveStuct>(maxPool);
+        pool = new List<PuffWave>(maxPool);
         for (int i = 0; i < maxPool; i++)
         {
-            pool.Add((PuffWave)Instantiate(puff, puffContainer));
+            PuffWave puffwave = (PuffWave)Instantiate(puff, puffContainer);
+            puffwave.gameObject.SetActive(false);
+            pool.Add(puffwave);
         }
     }
     
@@ -42,6 +44,7 @@ public class PuffPool : MonoBehaviour {
         {
             PuffWave tempPuff = pool[0];
             pool.RemoveAt(0);
+            tempPuff.gameObject.SetActive(true);
             return tempPuff;
         }
 
