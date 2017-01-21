@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
@@ -7,10 +8,20 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private List<Level> levels;
 
+    private List<PuffWave> levelObjs;
+
     Level currentLevel;
-    
-	// Use this for initialization
-	void Start () {
+
+    public static LevelManager main;
+
+    private void Awake()
+    {
+        main = this;
+    }
+
+    // Use this for initialization
+    void Start () {
+        levelObjs = new List<PuffWave>();
 	}
 	
 	// Update is called once per frame
@@ -18,11 +29,11 @@ public class LevelManager : MonoBehaviour {
 		
 	}
 
-    void LoadNextLevel()
+    public void LoadNextLevel()
     {
         currentLevel = levels[0];
         levels.RemoveAt(0);
-
+        levelObjs.AddRange(currentLevel.PuffWaveIds.Select(x => PuffPool.main.GetPuff(x)));
     }
 }
 
