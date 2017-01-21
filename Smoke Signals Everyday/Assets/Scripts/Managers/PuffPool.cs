@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PuffPool : MonoBehaviour {
 
     [SerializeField]
-    private List<PuffWave> differentPuffs;
+    private List<PuffWaveStuct> differentPuffs;
     [SerializeField]
-    private Puff puff;
+    private PuffWave puff;
     [SerializeField]
     private Transform puffContainer;
 
-    private List<Puff> pool;
+    private List<PuffWave> pool;
     private int maxPool = 100;
     
     public static PuffPool main;
@@ -28,18 +29,18 @@ public class PuffPool : MonoBehaviour {
 
     private void Init()
     {
-        differentPuffs = new List<PuffWave>(maxPool);
+        differentPuffs = new List<PuffWaveStuct>(maxPool);
         for (int i = 0; i < maxPool; i++)
         {
-            pool.Add((Puff)Instantiate(puff, puffContainer));
+            pool.Add((PuffWave)Instantiate(puff, puffContainer));
         }
     }
     
-    public Puff GetPuff()
+    public PuffWave GetNewPuff()
     {
         if(pool.Count > 0)
         {
-            Puff tempPuff = pool[0];
+            PuffWave tempPuff = pool[0];
             pool.RemoveAt(0);
             return tempPuff;
         }
@@ -47,10 +48,25 @@ public class PuffPool : MonoBehaviour {
         return null;
     }
 
-    public void DestroyPuff(Puff deletedPuff)
+    public PuffWave GetPuff(PuffWaveID pwName)
+    {
+        PuffWaveStuct pw = GetPW(pwName);
+        PuffWave newPuff = GetNewPuff();
+        newPuff.Puff = pw.Puff;
+        newPuff.Wave = pw.Wave;
+
+        return newPuff;
+    }
+
+    public void DestroyPuff(PuffWave deletedPuff)
     {
         pool.Add(deletedPuff);
         deletedPuff.gameObject.SetActive(false);
+    }
+
+    private PuffWaveStuct GetPW(PuffWaveID id)
+    {
+        return differentPuffs.Where(x => x.ID == id).FirstOrDefault();
     }
 
 	// Update is called once per frame
@@ -60,9 +76,19 @@ public class PuffPool : MonoBehaviour {
 }
 
 [System.Serializable]
-public class PuffWave : System.Object
+public class PuffWaveStuct : System.Object
 {
-    public string Name;
-    public Sprite Puff;
-    public Sprite Wave;
+    public PuffWaveID ID;
+    public Puff Puff;
+    public Wave Wave;
+}
+
+public enum PuffWaveID
+{
+    None,
+    Frog,
+    Garbage,
+    Enemy,
+    Fridge,
+    Acorn
 }
