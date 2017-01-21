@@ -8,6 +8,9 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private List<Level> levels;
 
+    [SerializeField]
+    private GameObject player;
+
     private List<PuffWave> levelObjs;
 
     Level currentLevel = null;
@@ -35,35 +38,7 @@ public class LevelManager : MonoBehaviour {
         {
             LoadNextLevel();
         }
-        if(debugTimer == 60)
-        {
-            if (levelObjs != null && levelObjs.Count > 0)
-            {
-                pw = levelObjs[0];
-                levelObjs.RemoveAt(0);
-                PuffPool.main.SetMoving(pw);
-            }
-        }
-        if (debugTimer == 60*4)
-        {
-            if (levelObjs != null && levelObjs.Count > 0)
-            {
-                PuffPool.main.DestroyPuff(pw);
-                pw = levelObjs[0];
-                levelObjs.RemoveAt(0);
-                PuffPool.main.SetMoving(pw);
-            }
-        }
-        if (debugTimer == 60 * 8)
-        {
-            if (levelObjs != null && levelObjs.Count > 0)
-            {
-                PuffPool.main.DestroyPuff(pw);
-                pw = levelObjs[0];
-                levelObjs.RemoveAt(0);
-                PuffPool.main.SetMoving(pw);
-            }
-        }
+
         if (debugTimer > 60 * 20)
         {
             Debug.Log("next level!");
@@ -71,6 +46,16 @@ public class LevelManager : MonoBehaviour {
             LoadNextLevel();
         }
 	}
+
+    public void NextObject()
+    {
+        if (levelObjs != null && levelObjs.Count > 0)
+        {
+            pw = levelObjs[0];
+            levelObjs.RemoveAt(0);
+            pw.IsMoving = true;
+        }
+    }
 
     public void LoadNextLevel()
     {
@@ -89,8 +74,10 @@ public class LevelManager : MonoBehaviour {
         for(int i = 0; i < levelObjs.Count; i++)
         {
             var x = levelObjs[i].transform.position.x;
-            levelObjs[i].transform.position = new Vector3(7f, 0, 0);
+            levelObjs[i].transform.position = new Vector3(player.transform.position.x + 10f, 0, 0);
         }
+
+        NextObject();
     }
 
     //just in case, clean up if anything was left from the previous level

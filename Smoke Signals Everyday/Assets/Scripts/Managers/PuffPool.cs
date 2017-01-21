@@ -77,18 +77,6 @@ public class PuffPool : MonoBehaviour {
         return differentPuffs.Where(x => x.ID == id).FirstOrDefault();
     }
 
-    //move puffwave from PuffContainer to WorldContainer
-    public void SetMoving(PuffWave pw)
-    {
-        pw.transform.parent = worldContainer;
-    }
-
-    //move puffwave from WorldContainer to PuffContainer
-    public void SetStationary(PuffWave pw)
-    {
-        pw.transform.parent = puffContainer;
-    }
-
 	// Update is called once per frame
 	void Update () {
 		

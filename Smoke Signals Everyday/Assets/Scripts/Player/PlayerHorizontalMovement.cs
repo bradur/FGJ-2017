@@ -5,7 +5,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerHorizontalMovement : MonoBehaviour {
+public class PlayerHorizontalMovement : MonoBehaviour
+{
 
     [SerializeField]
     private Rigidbody2D rb2d;
@@ -18,7 +19,8 @@ public class PlayerHorizontalMovement : MonoBehaviour {
     private bool isMoving = false;
     private Vector3 originalPosition;
 
-    void Start () {
+    void Start()
+    {
         originalPosition = transform.position;
         StartMoving();
     }
@@ -28,7 +30,8 @@ public class PlayerHorizontalMovement : MonoBehaviour {
         isMoving = true;
     }
 
-    void Update () {
+    void Update()
+    {
         if (isMoving)
         {
             rb2d.velocity = new Vector3(horizontalSpeed, rb2d.velocity.y, 0f);
