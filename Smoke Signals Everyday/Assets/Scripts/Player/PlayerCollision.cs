@@ -19,6 +19,7 @@ public class PlayerCollision : MonoBehaviour
         if (collider2d.tag == "Wave")
         {
             playerHitsWave = true;
+            collider2d.GetComponent<WaveCollision>().BallEnter();
         }
     }
 
@@ -27,6 +28,7 @@ public class PlayerCollision : MonoBehaviour
         if (collider2d.tag == "Wave")
         {
             playerHitsWave = false;
+            collider2d.GetComponent<WaveCollision>().BallExit();
         }
     }
 
