@@ -16,10 +16,13 @@ public class DeleteCollider : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "PuffWave")
+        if(collision.gameObject.tag == "Wave")
         {
-            PuffWave pw = collision.gameObject.GetComponent<PuffWave>();
-            PuffPool.main.DestroyPuff(pw);
+            GameObject waveCollider = collision.gameObject;
+            Transform waveObject = waveCollider.transform.parent;
+            PuffWave puffWave = waveObject.parent.GetComponent<PuffWave>();
+            
+            PuffPool.main.DestroyPuff(puffWave);
         }
     }
 }
