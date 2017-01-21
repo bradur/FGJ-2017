@@ -13,7 +13,7 @@ public class PlayerCollision : MonoBehaviour
     private GameObject hitParticle;
 
     [SerializeField]
-    [Range(0.2f, 2f)]
+    [Range(0.05f, 2f)]
     private float addScoreInterval = 0.2f;
     private float addScoreTimer = 0f;
 

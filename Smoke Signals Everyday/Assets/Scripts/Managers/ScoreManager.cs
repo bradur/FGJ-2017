@@ -13,6 +13,9 @@ public class ScoreManager : MonoBehaviour {
     [Range(1, 10)]
     private int scorePerTick = 1;
 
+    [SerializeField]
+    private int magicOneHundredPercentScore = 28;
+
     void Awake()
     {
         main = this;
@@ -21,13 +24,18 @@ public class ScoreManager : MonoBehaviour {
     public void AddScoreFromWave()
     {
         currentWaveScore += scorePerTick;
-        UIManager.main.SetScore(currentWaveScore);
+        //UIManager.main.SetScore(currentWaveScore);
+    }
+
+    public int GetScorePercentage()
+    {
+        return (int)(currentWaveScore * 1.0f / magicOneHundredPercentScore * 1.0f * 100);
     }
 
     public void ResetScore()
     {
         currentWaveScore = 0;
-        UIManager.main.SetScore(currentWaveScore);
+        //UIManager.main.SetScore(currentWaveScore);
     }
 
 }

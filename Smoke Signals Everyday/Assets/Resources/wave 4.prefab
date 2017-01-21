@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 212081672308214336}
   - component: {fileID: 114231417035397214}
   - component: {fileID: 60842576429758840}
+  - component: {fileID: 95471392105348152}
   m_Layer: 4
   m_Name: wave 4
   m_TagString: Wave
@@ -130,6 +131,23 @@ PolygonCollider2D:
       - {x: -2.3999999, y: -2.96}
       - {x: -2.32, y: -2.9399998}
       - {x: -1.9799999, y: -2.78}
+--- !u!95 &95471392105348152
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1290286641207586}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 352ebd2ffe8d5fb49b14b71d69752d15, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114231417035397214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,7 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaaf5741a6d36c644bade597f15aff4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
 --- !u!212 &212081672308214336
 SpriteRenderer:
   m_ObjectHideFlags: 1

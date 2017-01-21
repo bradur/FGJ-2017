@@ -27,6 +27,9 @@ public class UIManager : MonoBehaviour {
     [SerializeField]
     private Dialog dialog;
 
+    [SerializeField]
+    private FloatingScore floatingScore;
+
     void Awake()
     {
         main = this;
@@ -35,6 +38,11 @@ public class UIManager : MonoBehaviour {
     public void SetScore(int newScore)
     {
         txtScore.text = newScore.ToString();
+    }
+
+    public void ShowScore(int score)
+    {
+        floatingScore.Show(score);
     }
 
     void SetSmokeMessage(string newMessage)

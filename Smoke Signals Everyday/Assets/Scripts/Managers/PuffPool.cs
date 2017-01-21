@@ -63,8 +63,9 @@ public class PuffPool : MonoBehaviour {
         newPuff.Puff.Sprite = pw.puffSprite;
 
         Wave wave = Instantiate(pw.wave);
+        wave.name = "wave";
         wave.transform.SetParent(newPuff.Wave.transform, false);
-        wave.GetComponent<WaveCollision>().Animator = newPuff.Wave.GetComponent<Animator>();
+        
         newPuff.LittleWave = wave;
         //newPuff.Wave = wave;
 

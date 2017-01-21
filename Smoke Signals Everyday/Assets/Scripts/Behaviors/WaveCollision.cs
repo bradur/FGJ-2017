@@ -6,18 +6,17 @@ using UnityEngine;
 
 public class WaveCollision : MonoBehaviour {
 
-    [SerializeField]
-    private Animator animator;
-    public Animator Animator { set { animator = value; } }
-
     public void BallEnter()
     {
-        animator.SetTrigger("BallEnter");
+        Animator animator = GetComponentInChildren<Animator>();
+        Debug.Log(animator.name);
+        animator.SetTrigger("Show");
     }
 
     public void BallExit()
     {
-        animator.SetTrigger("BallExit");
+        Animator animator = GetComponentInChildren<Animator>();
+        animator.SetTrigger("Hide");
     }
 
 }
