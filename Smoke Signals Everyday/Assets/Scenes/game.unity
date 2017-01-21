@@ -445,7 +445,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 535766933}
   speedForward: 2
-  verticalSpeed: 4.52
+  verticalSpeed: 2.99
+  doubleTapSpeed: 8.2
+  doubleTapInterval: 0.137
+  doubleTapStayMax: 0.3
 --- !u!212 &535766931
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -514,7 +517,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &535766934
 MonoBehaviour:
   m_ObjectHideFlags: 0
