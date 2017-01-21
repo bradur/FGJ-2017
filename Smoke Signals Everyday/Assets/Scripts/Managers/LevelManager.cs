@@ -16,10 +16,9 @@ public class LevelManager : MonoBehaviour {
     Level currentLevel = null;
 
     public static LevelManager main;
-    PuffWave pw = null;
-
-    private int debugTimer = 0;
-
+    private PuffWave currentPuffWave = null;
+    private bool lastPuffWave = false;
+    
     private void Awake()
     {
         main = this;
@@ -32,17 +31,9 @@ public class LevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        debugTimer++;
 
         if (currentLevel == null)
         {
-            LoadNextLevel();
-        }
-
-        if (debugTimer > 60 * 20)
-        {
-            Debug.Log("next level!");
-            debugTimer = 0;
             LoadNextLevel();
         }
 	}
@@ -51,9 +42,14 @@ public class LevelManager : MonoBehaviour {
     {
         if (levelObjs != null && levelObjs.Count > 0)
         {
-            pw = levelObjs[0];
+            currentPuffWave = levelObjs[0];
             levelObjs.RemoveAt(0);
-            pw.IsMoving = true;
+            currentPuffWave.IsMoving = true;
+            lastPuffWave = false;
+        }
+        else
+        {
+            lastPuffWave = true;
         }
     }
 
@@ -68,7 +64,7 @@ public class LevelManager : MonoBehaviour {
         CleanUp();
 
         currentLevel = levels[0];
-        Debug.Log(currentLevel.levelNumber);
+        Debug.Log("Level changed to: "+ currentLevel.levelNumber);
         levels.RemoveAt(0);
         levelObjs.AddRange(currentLevel.PuffWaveIds.Select(x => PuffPool.main.GetPuff(x)));
         UIManager.main.SetLevel(currentLevel.dialog, new List<PuffWaveStuct>(currentLevel.PuffWaveIds.Select(x => PuffPool.main.GetPuffStuct(x))));
@@ -80,6 +76,14 @@ public class LevelManager : MonoBehaviour {
         }
 
         NextObject();
+    }
+
+    public void DeletedPuffWave()
+    {
+        if(lastPuffWave)
+        {
+            LoadNextLevel();
+        }
     }
 
     //just in case, clean up if anything was left from the previous level

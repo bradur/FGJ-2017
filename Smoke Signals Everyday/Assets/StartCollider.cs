@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StartCollider : MonoBehaviour
 {
-    PuffWave collider;
-
     // Use this for initialization
     void Start()
     {
@@ -25,27 +23,9 @@ public class StartCollider : MonoBehaviour
             GameObject waveCollider = collision.gameObject;
             Transform waveObject = waveCollider.transform.parent;
             PuffWave puffWave = waveObject.parent.GetComponent<PuffWave>();
-            collider = puffWave;
 
-            //pause the object for a moment
-            puffWave.IsMoving = false;
-            StartCoroutine(MoveAfterDelay());
+            LevelManager.main.NextObject();
+            //TODO: WorldManager kutsu että player voi liikkua
         }
-    }
-
-    private IEnumerator MoveAfterDelay()
-    {
-        if(collider == null)
-        {
-            yield return null;
-        }
-
-        LevelManager.main.NextObject();
-        yield return new WaitForSeconds(2f);
-
-        collider.IsMoving = true;
-        collider = null; //not needed anymore
-        
-        yield return null;
     }
 }
