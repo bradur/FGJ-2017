@@ -25,7 +25,7 @@ public class StartCollider : MonoBehaviour
             PuffWave puffWave = waveObject.parent.GetComponent<PuffWave>();
             puffWave.IsMoving = false;
             puffWave.transform.SetParent(WorldManager.main.WorldParent, true);
-
+            WorldManager.main.EnablePlayerTrail();
             LevelManager.main.NextObject();
             //TODO: WorldManager kutsu että player voi liikkua
             WorldManager.main.SetPlayerMovement(true);

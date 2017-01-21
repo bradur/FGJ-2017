@@ -25,6 +25,8 @@ public class DeleteCollider : MonoBehaviour {
             LevelManager.main.DeletedPuffWave();
 
             PuffPool.main.DestroyPuff(puffWave);
+            WorldManager.main.ClearPlayerTrail();
+            WorldManager.main.DisablePlayerTrail();
         }
     }
 }

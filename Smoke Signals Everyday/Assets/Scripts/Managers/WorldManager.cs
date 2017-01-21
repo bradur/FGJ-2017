@@ -58,6 +58,21 @@ public class WorldManager : MonoBehaviour
         playerContoller.AllowMovement = letMove;
     }
 
+    public void ClearPlayerTrail()
+    {
+        playerContoller.Trail.Clear();
+    }
+
+    public void DisablePlayerTrail()
+    {
+        playerContoller.Trail.enabled = false;
+    }
+
+    public void EnablePlayerTrail()
+    {
+        playerContoller.Trail.enabled = true;
+    }
+
     public void Continue()
     {
         // unpause and continue

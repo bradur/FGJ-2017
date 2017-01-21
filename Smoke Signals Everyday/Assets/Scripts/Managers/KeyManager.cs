@@ -7,7 +7,8 @@ public enum Action
     MoveUp,
     MoveDown,
     ResetWaveDebug,
-    Pause
+    Pause,
+    Nitro
 }
 
 public class KeyManager : MonoBehaviour {
