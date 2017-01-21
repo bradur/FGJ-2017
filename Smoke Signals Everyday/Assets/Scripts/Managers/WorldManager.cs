@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class WorldManager : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerHorizontalMovement player;
 
     public static WorldManager main;
     private bool isPaused = false;
@@ -42,6 +45,11 @@ public class WorldManager : MonoBehaviour
         // retry current level
     }
 
+    public void SetPlayerMovement(bool letMove)
+    {
+        player.StartMoving();
+    }
+
     public void Continue()
     {
         // unpause and continue
@@ -60,5 +68,10 @@ public class WorldManager : MonoBehaviour
         isPaused = true;
         Time.timeScale = 0f;
         UIManager.main.ShowDialog(DialogType.Pause);
+    }
+
+    public Vector3 GetPlayerPos()
+    {
+        return player.transform.position;
     }
 }

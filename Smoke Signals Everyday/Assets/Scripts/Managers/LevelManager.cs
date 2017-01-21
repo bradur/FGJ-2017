@@ -8,9 +8,6 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private List<Level> levels;
 
-    [SerializeField]
-    private GameObject player;
-
     private List<PuffWave> levelObjs;
 
     Level currentLevel = null;
@@ -72,7 +69,8 @@ public class LevelManager : MonoBehaviour {
         for(int i = 0; i < levelObjs.Count; i++)
         {
             var x = levelObjs[i].transform.position.x;
-            levelObjs[i].transform.position = new Vector3(player.transform.position.x + 10f, 0, 0);
+            Vector3 playerPos = WorldManager.main.GetPlayerPos();
+            levelObjs[i].transform.position = new Vector3(playerPos.x + 10f, 0, 0);
         }
 
         NextObject();

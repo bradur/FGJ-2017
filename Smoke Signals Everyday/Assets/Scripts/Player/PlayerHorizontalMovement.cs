@@ -22,12 +22,17 @@ public class PlayerHorizontalMovement : MonoBehaviour
     void Start()
     {
         originalPosition = transform.position;
-        StartMoving();
+        //StartMoving();
     }
 
     public void StartMoving()
     {
         isMoving = true;
+    }
+
+    public void StopMoving()
+    {
+        isMoving = false;
     }
 
     void Update()
