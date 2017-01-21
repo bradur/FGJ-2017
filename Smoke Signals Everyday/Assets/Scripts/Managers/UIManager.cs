@@ -3,6 +3,14 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 
+public enum DialogType
+{
+    None,
+    Fail,
+    Success,
+    Pause
+}
+
 public class UIManager : MonoBehaviour {
 
     public static UIManager main;
@@ -15,6 +23,9 @@ public class UIManager : MonoBehaviour {
 
     [SerializeField]
     private List<Image> imgPuffs = new List<Image>();
+
+    [SerializeField]
+    private Dialog dialog;
 
     void Awake()
     {
@@ -56,4 +67,13 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    public void ShowDialog(DialogType dialogType)
+    {
+        dialog.Show(dialogType);
+    }
+
+    public void HideDialog()
+    {
+        dialog.Hide();
+    }
 }
