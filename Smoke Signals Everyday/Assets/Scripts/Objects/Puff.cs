@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class Puff : MonoBehaviour {
 
 	// Use this for initialization
@@ -13,4 +14,9 @@ public class Puff : MonoBehaviour {
 	void Update () {
 		
 	}
+    }    
+    // Update is called once per frame
+    void Update () {
+        
+    }
 }

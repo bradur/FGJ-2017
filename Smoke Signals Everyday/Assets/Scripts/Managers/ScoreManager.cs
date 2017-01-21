@@ -21,13 +21,13 @@ public class ScoreManager : MonoBehaviour {
     public void AddScoreFromWave()
     {
         currentWaveScore += scorePerTick;
-        UIManager.main.UpdateScore(currentWaveScore);
+        UIManager.main.SetScore(currentWaveScore);
     }
 
     public void ResetScore()
     {
         currentWaveScore = 0;
-        UIManager.main.UpdateScore(currentWaveScore);
+        UIManager.main.SetScore(currentWaveScore);
     }
 
 }
