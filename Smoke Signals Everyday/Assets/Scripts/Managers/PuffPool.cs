@@ -11,6 +11,8 @@ public class PuffPool : MonoBehaviour {
     private PuffWave puff;
     [SerializeField]
     private Transform puffContainer;
+    [SerializeField]
+    private Transform worldContainer;
 
     private List<PuffWave> pool;
     private int maxPool = 25;
@@ -55,14 +57,17 @@ public class PuffPool : MonoBehaviour {
     {
         PuffWaveStuct pw = GetPW(pwName);
         PuffWave newPuff = GetNewPuff();
-        newPuff.Puff = pw.Puff;
-        newPuff.Wave = pw.Wave;
+        newPuff.Puff = pw.PuffWave.Puff;
+        newPuff.Wave = pw.PuffWave.Wave;
+
 
         return newPuff;
     }
 
     public void DestroyPuff(PuffWave deletedPuff)
     {
+        if (deletedPuff == null) return; 
+
         pool.Add(deletedPuff);
         deletedPuff.gameObject.SetActive(false);
     }
@@ -70,6 +75,18 @@ public class PuffPool : MonoBehaviour {
     private PuffWaveStuct GetPW(PuffWaveID id)
     {
         return differentPuffs.Where(x => x.ID == id).FirstOrDefault();
+    }
+
+    //move puffwave from PuffContainer to WorldContainer
+    public void SetMoving(PuffWave pw)
+    {
+        pw.transform.parent = worldContainer;
+    }
+
+    //move puffwave from WorldContainer to PuffContainer
+    public void SetStationary(PuffWave pw)
+    {
+        pw.transform.parent = puffContainer;
     }
 
 	// Update is called once per frame
@@ -82,8 +99,7 @@ public class PuffPool : MonoBehaviour {
 public class PuffWaveStuct : System.Object
 {
     public PuffWaveID ID;
-    public Puff Puff;
-    public Wave Wave;
+    public PuffWave PuffWave;
 }
 
 public enum PuffWaveID

@@ -14,6 +14,7 @@ public class PlayerHorizontalMovement : MonoBehaviour {
     [Range(0.2f, 2f)]
     private float horizontalSpeed = 1f;
 
+    [SerializeField]
     private bool isMoving = false;
     private Vector3 originalPosition;
 
