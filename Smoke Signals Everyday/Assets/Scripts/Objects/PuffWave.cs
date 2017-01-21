@@ -21,13 +21,6 @@ public class PuffWave : MonoBehaviour
     private bool isMoving = false;
     public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
     {
         if (isMoving)
         {

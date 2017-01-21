@@ -21,7 +21,7 @@ public class DeleteCollider : MonoBehaviour {
             GameObject waveCollider = collision.gameObject;
             Transform waveObject = waveCollider.transform.parent;
             PuffWave puffWave = waveObject.parent.GetComponent<PuffWave>();
-
+            
             LevelManager.main.DeletedPuffWave();
 
             PuffPool.main.DestroyPuff(puffWave);

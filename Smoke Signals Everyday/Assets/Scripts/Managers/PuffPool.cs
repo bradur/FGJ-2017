@@ -59,7 +59,11 @@ public class PuffPool : MonoBehaviour {
         PuffWaveStuct pw = GetPW(pwName);
         PuffWave newPuff = GetNewPuff();
         newPuff.Puff.Sprite = pw.puffSprite;
-        newPuff.Wave = pw.wave;
+        Wave wave = Instantiate(pw.wave);
+        wave.transform.SetParent(newPuff.Wave.transform, true);
+        wave.GetComponent<WaveCollision>().Animator = newPuff.Wave.GetComponent<Animator>();
+        newPuff.LittleWave = wave;
+        //newPuff.Wave = wave;
 
         return newPuff;
     }
@@ -78,9 +82,12 @@ public class PuffPool : MonoBehaviour {
 
     public void DestroyPuff(PuffWave deletedPuff)
     {
-        if (deletedPuff == null) return; 
+        if (deletedPuff == null) return;
+
+        Destroy(deletedPuff.LittleWave.gameObject);
 
         pool.Add(deletedPuff);
+        deletedPuff.transform.SetParent(puffContainer);
         deletedPuff.gameObject.SetActive(false);
     }
 

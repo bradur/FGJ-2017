@@ -8,6 +8,7 @@ public class WaveCollision : MonoBehaviour {
 
     [SerializeField]
     private Animator animator;
+    public Animator Animator { set { animator = value; } }
 
     public void BallEnter()
     {

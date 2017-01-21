@@ -70,7 +70,7 @@ public class LevelManager : MonoBehaviour {
         {
             var x = levelObjs[i].transform.position.x;
             Vector3 playerPos = WorldManager.main.GetPlayerPos();
-            levelObjs[i].transform.position = new Vector3(playerPos.x + 10f, 0, 0);
+            levelObjs[i].transform.position = new Vector3(playerPos.x + 15f, 0, 0);
         }
 
         NextObject();

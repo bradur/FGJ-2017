@@ -1145,7 +1145,7 @@ GameObject:
   - component: {fileID: 567177708}
   - component: {fileID: 567177709}
   - component: {fileID: 567177710}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: LowerBound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1557,6 +1557,10 @@ Prefab:
       propertyPath: m_LinearDrag
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1380980110748662, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
   m_IsPrefabParent: 0
@@ -1715,12 +1719,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 779294287}
---- !u!114 &867690182 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114230165964999632, guid: 046acaf4f4780eb40943ff17c0ce04be,
-    type: 2}
-  m_PrefabInternal: {fileID: 747962943}
-  m_Script: {fileID: 11500000, guid: 9ed6168b609f7514a914f3c121cdc4f8, type: 3}
 --- !u!1 &872071286
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,34 +2280,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   differentPuffs:
   - ID: 1
-    wave: {fileID: 867690182}
+    wave: {fileID: 114231417035397214, guid: 83cb91bf94da2884c801d70884d25ede, type: 2}
     puffSprite: {fileID: 21300014, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 2
-    wave: {fileID: 867690182}
+    wave: {fileID: 114231417035397214, guid: 83cb91bf94da2884c801d70884d25ede, type: 2}
     puffSprite: {fileID: 21300004, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 4
-    wave: {fileID: 867690182}
+    wave: {fileID: 114231417035397214, guid: 83cb91bf94da2884c801d70884d25ede, type: 2}
     puffSprite: {fileID: 21300000, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 5
-    wave: {fileID: 867690182}
+    wave: {fileID: 114231417035397214, guid: 83cb91bf94da2884c801d70884d25ede, type: 2}
     puffSprite: {fileID: 21300006, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 6
-    wave: {fileID: 867690182}
+    wave: {fileID: 114231417035397214, guid: 83cb91bf94da2884c801d70884d25ede, type: 2}
     puffSprite: {fileID: 21300010, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 7
-    wave: {fileID: 867690182}
+    wave: {fileID: 114231417035397214, guid: 83cb91bf94da2884c801d70884d25ede, type: 2}
     puffSprite: {fileID: 21300022, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 8
-    wave: {fileID: 867690182}
+    wave: {fileID: 114231417035397214, guid: 83cb91bf94da2884c801d70884d25ede, type: 2}
     puffSprite: {fileID: 21300002, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 9
-    wave: {fileID: 867690182}
+    wave: {fileID: 114231417035397214, guid: 83cb91bf94da2884c801d70884d25ede, type: 2}
     puffSprite: {fileID: 21300020, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 10
-    wave: {fileID: 867690182}
+    wave: {fileID: 114231417035397214, guid: 83cb91bf94da2884c801d70884d25ede, type: 2}
     puffSprite: {fileID: 21300012, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 3
-    wave: {fileID: 867690182}
+    wave: {fileID: 114231417035397214, guid: 83cb91bf94da2884c801d70884d25ede, type: 2}
     puffSprite: {fileID: 21300016, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   puff: {fileID: 747962944}
   puffContainer: {fileID: 885482562}
@@ -2506,7 +2504,7 @@ GameObject:
   - component: {fileID: 1356929651}
   - component: {fileID: 1356929653}
   - component: {fileID: 1356929652}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: UpperBound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5971,3 +5969,45 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!1001 &1862490869
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4608624130471108, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608624130471108, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608624130471108, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608624130471108, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608624130471108, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608624130471108, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608624130471108, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608624130471108, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
+  m_IsPrefabParent: 0
