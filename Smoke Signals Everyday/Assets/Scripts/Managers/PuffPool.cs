@@ -107,8 +107,13 @@ public enum PuffWaveID
 {
     None,
     Frog,
+    AngryOwl,
+    Corn,
+    ExclamationMark,
+    Eye,
     Garbage,
-    Enemy,
-    Fridge,
+    HappyRaccoon,
+    QuestionMark,
+    Wolf,
     Acorn
 }
