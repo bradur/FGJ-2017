@@ -7,8 +7,15 @@ public class WorldManager : MonoBehaviour
     [SerializeField]
     private PlayerHorizontalMovement player;
 
+    [SerializeField]
+    private PlayerController playerContoller;
+
     public static WorldManager main;
     private bool isPaused = false;
+
+    [SerializeField]
+    private Transform worldParent;
+    public Transform WorldParent { get { return worldParent; } }
 
     void Start()
     {
@@ -48,6 +55,7 @@ public class WorldManager : MonoBehaviour
     public void SetPlayerMovement(bool letMove)
     {
         player.StartMoving();
+        playerContoller.AllowMovement = letMove;
     }
 
     public void Continue()

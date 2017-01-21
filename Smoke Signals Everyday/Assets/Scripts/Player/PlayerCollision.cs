@@ -10,6 +10,9 @@ public class PlayerCollision : MonoBehaviour
     private bool playerHitsWave = false;
 
     [SerializeField]
+    private GameObject hitParticle;
+
+    [SerializeField]
     [Range(0.2f, 2f)]
     private float addScoreInterval = 0.2f;
     private float addScoreTimer = 0f;
@@ -18,6 +21,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collider2d.tag == "Wave")
         {
+            hitParticle.SetActive(true);
             playerHitsWave = true;
             collider2d.GetComponent<WaveCollision>().BallEnter();
         }
@@ -27,6 +31,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collider2d.tag == "Wave")
         {
+            hitParticle.SetActive(false);
             playerHitsWave = false;
             collider2d.GetComponent<WaveCollision>().BallExit();
         }

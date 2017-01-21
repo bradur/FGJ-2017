@@ -18,8 +18,4 @@ public class TrailRendererLayerOrder : MonoBehaviour {
         trailRenderer.sortingOrder = order;
     }
 
-    public void Reset()
-    {
-        trailRenderer.Clear();
-    }
 }

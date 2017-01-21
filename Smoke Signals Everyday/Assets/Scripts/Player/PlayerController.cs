@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
     private int doubleTapMoveUp = 0;
     private int doubleTapMoveDown = 0;
 
+    private bool allowMovement = false;
+    public bool AllowMovement { get { return allowMovement; } set { allowMovement = value; } }
+
     void Start()
     {
         moveUp = KeyManager.main.GetKey(Action.MoveUp);
@@ -50,86 +53,84 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-
-        if (doubleTapMoveDownTimer < doubleTapInterval)
+        if (allowMovement)
         {
-            doubleTapMoveDownTimer += Time.deltaTime;
-        }
-        if (doubleTapMoveUpTimer < doubleTapInterval)
-        {
-            doubleTapMoveUpTimer += Time.deltaTime;
-        }
-        /*float verticalAxis = Input.GetAxis("Vertical");
-        rb2d.velocity = new Vector3(rb2d.velocity.x, verticalAxis * speedForward, 0f);*/
-
-
-        if (Input.GetKeyDown(moveUp))
-        {
-            Debug.Log(doubleTapMoveUp);
-            if (doubleTapMoveUp > 0)
+            if (doubleTapMoveDownTimer < doubleTapInterval)
             {
-                if (doubleTapMoveUpTimer < doubleTapInterval)
-                {
-                    rb2d.AddForce(new Vector2(0, doubleTapSpeed), ForceMode2D.Impulse);
-                    Debug.Log("DEOUBLTABPED");
-                } else
-                {
-                    Debug.Log(doubleTapMoveUpTimer + ">" + doubleTapInterval);
-                }
-                doubleTapMoveUp = 0;
-            } else
-            {
-                doubleTapMoveUp++;
+                doubleTapMoveDownTimer += Time.deltaTime;
             }
-            doubleTapMoveUpTimer = 0f;
-            doubleTapMoveDown = 0;
-        }
-        else if (Input.GetKey(moveUp))
-        {
-            rb2d.AddForce(new Vector2(0, verticalSpeed));
-            doubleTapMoveUpStayTimer += Time.deltaTime;
-        }
-        if (Input.GetKeyUp(moveUp))
-        {
-            if (doubleTapMoveUpStayTimer > doubleTapStayMax)
+            if (doubleTapMoveUpTimer < doubleTapInterval)
             {
-                doubleTapMoveUp = 0;
+                doubleTapMoveUpTimer += Time.deltaTime;
             }
-            doubleTapMoveUpStayTimer = 0f;
-            doubleTapMoveUpTimer = 0f;
-        }
-        if (Input.GetKeyDown(moveDown))
-        {
-            if (doubleTapMoveDown > 0)
+            /*float verticalAxis = Input.GetAxis("Vertical");
+            rb2d.velocity = new Vector3(rb2d.velocity.x, verticalAxis * speedForward, 0f);*/
+
+
+            if (Input.GetKeyDown(moveUp))
             {
-                if (doubleTapMoveDownTimer < doubleTapInterval)
+                Debug.Log(doubleTapMoveUp);
+                if (doubleTapMoveUp > 0)
                 {
-                    rb2d.AddForce(new Vector2(0, -doubleTapSpeed), ForceMode2D.Impulse);
-                    Debug.Log("DEOUBLTABPEDDOWN");
+                    if (doubleTapMoveUpTimer < doubleTapInterval)
+                    {
+                        rb2d.AddForce(new Vector2(0, doubleTapSpeed), ForceMode2D.Impulse);
+                    }
+                    doubleTapMoveUp = 0;
                 }
+                else
+                {
+                    doubleTapMoveUp++;
+                }
+                doubleTapMoveUpTimer = 0f;
                 doubleTapMoveDown = 0;
             }
-            else
+            else if (Input.GetKey(moveUp))
             {
-                doubleTapMoveDown++;
+                rb2d.AddForce(new Vector2(0, verticalSpeed));
+                doubleTapMoveUpStayTimer += Time.deltaTime;
             }
-            
-            doubleTapMoveDownTimer = 0f;
-            doubleTapMoveUp = 0;
-        }
-        else if (Input.GetKey(moveDown))
-        {
-            rb2d.AddForce(new Vector2(0, -verticalSpeed));
-            doubleTapMoveDownStayTimer += Time.deltaTime;
-        }
-        if (Input.GetKeyUp(moveDown))
-        {
-            if(doubleTapMoveDownStayTimer > doubleTapStayMax)
+            if (Input.GetKeyUp(moveUp))
             {
-                doubleTapMoveDown = 0;
+                if (doubleTapMoveUpStayTimer > doubleTapStayMax)
+                {
+                    doubleTapMoveUp = 0;
+                }
+                doubleTapMoveUpStayTimer = 0f;
+                doubleTapMoveUpTimer = 0f;
             }
-            doubleTapMoveDownStayTimer = 0f;
-            doubleTapMoveDownTimer = 0f;
+            if (Input.GetKeyDown(moveDown))
+            {
+                if (doubleTapMoveDown > 0)
+                {
+                    if (doubleTapMoveDownTimer < doubleTapInterval)
+                    {
+                        rb2d.AddForce(new Vector2(0, -doubleTapSpeed), ForceMode2D.Impulse);
+                    }
+                    doubleTapMoveDown = 0;
+                }
+                else
+                {
+                    doubleTapMoveDown++;
+                }
+
+                doubleTapMoveDownTimer = 0f;
+                doubleTapMoveUp = 0;
+            }
+            else if (Input.GetKey(moveDown))
+            {
+                rb2d.AddForce(new Vector2(0, -verticalSpeed));
+                doubleTapMoveDownStayTimer += Time.deltaTime;
+            }
+            if (Input.GetKeyUp(moveDown))
+            {
+                if (doubleTapMoveDownStayTimer > doubleTapStayMax)
+                {
+                    doubleTapMoveDown = 0;
+                }
+                doubleTapMoveDownStayTimer = 0f;
+                doubleTapMoveDownTimer = 0f;
+            }
         }
 
     }

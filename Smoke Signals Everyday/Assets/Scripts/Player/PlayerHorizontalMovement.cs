@@ -16,6 +16,9 @@ public class PlayerHorizontalMovement : MonoBehaviour
     private float horizontalSpeed = 1f;
 
     [SerializeField]
+    private TrailRenderer trail;
+
+    [SerializeField]
     private bool isMoving = false;
     private Vector3 originalPosition;
 
@@ -28,11 +31,14 @@ public class PlayerHorizontalMovement : MonoBehaviour
     public void StartMoving()
     {
         isMoving = true;
+        trail.Clear();
+        trail.gameObject.SetActive(true);
     }
 
     public void StopMoving()
     {
         isMoving = false;
+        trail.gameObject.SetActive(false);
     }
 
     void Update()
@@ -41,12 +47,6 @@ public class PlayerHorizontalMovement : MonoBehaviour
         {
             rb2d.velocity = new Vector3(horizontalSpeed, rb2d.velocity.y, 0f);
         }
-        // DEBUG
-        if (Input.GetKey(KeyManager.main.GetKey(Action.ResetWaveDebug)))
-        {
-            transform.position = originalPosition;
-            ScoreManager.main.ResetScore();
-            GetComponentInChildren<TrailRenderer>().Clear();
-        }
+
     }
 }
