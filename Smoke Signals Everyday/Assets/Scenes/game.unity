@@ -1078,11 +1078,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1380980110748662, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 114153063438212066, guid: 046acaf4f4780eb40943ff17c0ce04be,
+        type: 2}
+      propertyPath: horizontalSpeed
+      value: -2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 50479397990774470, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &747962944 stripped
@@ -1402,6 +1404,7 @@ MonoBehaviour:
   - levelNumber: 1
     PuffWaveIds: 050000000400000005000000
     dialog: bbbb
+  player: {fileID: 535766929}
 --- !u!4 &1045351216
 Transform:
   m_ObjectHideFlags: 0
