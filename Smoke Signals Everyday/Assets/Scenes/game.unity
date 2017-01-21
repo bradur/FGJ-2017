@@ -392,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534560bd3521fe84c98361bedae1eee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 535766936}
 --- !u!4 &221310516
 Transform:
   m_ObjectHideFlags: 0
@@ -1541,13 +1542,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114153063438212066, guid: 046acaf4f4780eb40943ff17c0ce04be,
+    - target: {fileID: 50640568589052982, guid: 046acaf4f4780eb40943ff17c0ce04be,
         type: 2}
-      propertyPath: horizontalSpeed
-      value: -2
+      propertyPath: m_Mass
+      value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 50479397990774470, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
+    - target: {fileID: 50640568589052982, guid: 046acaf4f4780eb40943ff17c0ce04be,
+        type: 2}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 046acaf4f4780eb40943ff17c0ce04be, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &747962944 stripped
@@ -1945,7 +1950,6 @@ MonoBehaviour:
   - levelNumber: 1
     PuffWaveIds: 050000000400000005000000
     dialog: bbbb
-  player: {fileID: 535766929}
 --- !u!4 &1045351216
 Transform:
   m_ObjectHideFlags: 0
@@ -2274,19 +2278,34 @@ MonoBehaviour:
   differentPuffs:
   - ID: 1
     wave: {fileID: 867690182}
-    puffSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    puffSprite: {fileID: 21300014, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 2
     wave: {fileID: 867690182}
-    puffSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - ID: 3
-    wave: {fileID: 867690182}
-    puffSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    puffSprite: {fileID: 21300004, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 4
     wave: {fileID: 867690182}
-    puffSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    puffSprite: {fileID: 21300000, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   - ID: 5
     wave: {fileID: 867690182}
-    puffSprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+    puffSprite: {fileID: 21300006, guid: 22b0100f276480143a84173a400efa3d, type: 3}
+  - ID: 6
+    wave: {fileID: 867690182}
+    puffSprite: {fileID: 21300010, guid: 22b0100f276480143a84173a400efa3d, type: 3}
+  - ID: 7
+    wave: {fileID: 867690182}
+    puffSprite: {fileID: 21300022, guid: 22b0100f276480143a84173a400efa3d, type: 3}
+  - ID: 8
+    wave: {fileID: 867690182}
+    puffSprite: {fileID: 21300002, guid: 22b0100f276480143a84173a400efa3d, type: 3}
+  - ID: 9
+    wave: {fileID: 867690182}
+    puffSprite: {fileID: 21300020, guid: 22b0100f276480143a84173a400efa3d, type: 3}
+  - ID: 10
+    wave: {fileID: 867690182}
+    puffSprite: {fileID: 21300012, guid: 22b0100f276480143a84173a400efa3d, type: 3}
+  - ID: 3
+    wave: {fileID: 867690182}
+    puffSprite: {fileID: 21300016, guid: 22b0100f276480143a84173a400efa3d, type: 3}
   puff: {fileID: 747962944}
   puffContainer: {fileID: 885482562}
   worldContainer: {fileID: 1040140986}

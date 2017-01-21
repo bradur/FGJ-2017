@@ -26,6 +26,7 @@ public class StartCollider : MonoBehaviour
 
             LevelManager.main.NextObject();
             //TODO: WorldManager kutsu että player voi liikkua
+            WorldManager.main.SetPlayerMovement(true);
         }
     }
 }
