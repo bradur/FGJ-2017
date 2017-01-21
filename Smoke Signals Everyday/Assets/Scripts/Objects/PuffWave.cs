@@ -18,9 +18,19 @@ public class PuffWave : MonoBehaviour
     public Wave Wave;
 
     [SerializeField]
+    private Wave littleWave;
+    public Wave LittleWave { get { return littleWave; } set { littleWave = value; } }
+
+    [SerializeField]
     private bool isMoving = false;
     public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
 
+    // Use this for initialization
+    void Start () {
+    }
+    
+    // Update is called once per frame
+    void Update ()
     {
         if (isMoving)
         {
