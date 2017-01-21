@@ -8,6 +8,9 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private List<Level> levels;
 
+    [SerializeField]
+    private Transform puffPlace;
+
     private List<PuffWave> levelObjs;
 
     Level currentLevel = null;
@@ -15,7 +18,8 @@ public class LevelManager : MonoBehaviour {
     public static LevelManager main;
     private PuffWave currentPuffWave = null;
     private bool lastPuffWave = false;
-    
+    private SpriteRenderer puffSprite;
+
     private void Awake()
     {
         main = this;
@@ -24,7 +28,8 @@ public class LevelManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         levelObjs = new List<PuffWave>();
-	}
+        puffSprite = puffPlace.GetComponent<SpriteRenderer>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -43,11 +48,23 @@ public class LevelManager : MonoBehaviour {
             levelObjs.RemoveAt(0);
             currentPuffWave.IsMoving = true;
             lastPuffWave = false;
+            initPuffPlace(currentPuffWave.Puff.Sprite);
         }
         else
         {
             lastPuffWave = true;
         }
+    }
+
+    private void initPuffPlace(Sprite sprite)
+    {
+        puffSprite.sprite = sprite;
+        SetPuffAlpha(0f);
+    }
+
+    public void SetPuffAlpha(float alpha)
+    {
+        puffSprite.color = new Color(puffSprite.color.r, puffSprite.color.g, puffSprite.color.b, alpha);
     }
 
     public void LoadNextLevel()
