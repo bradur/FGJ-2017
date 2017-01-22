@@ -101,6 +101,11 @@ public class WorldManager : MonoBehaviour
         UIManager.main.ShowDialog(DialogType.Pause);
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene("game");
+    }
+
     public Vector3 GetPlayerPos()
     {
         return player.transform.position;

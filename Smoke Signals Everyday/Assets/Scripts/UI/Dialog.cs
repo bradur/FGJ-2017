@@ -17,6 +17,16 @@ public class Dialog : MonoBehaviour
     private Text txtMessage;
 
     [SerializeField]
+    private Image imgForeGround;
+
+    [SerializeField]
+    private Sprite failSprite;
+    [SerializeField]
+    private Sprite successSprite;
+    [SerializeField]
+    private Sprite pauseSprite;
+
+    [SerializeField]
     private bool isFailDialog;
 
     [SerializeField]
@@ -27,6 +37,9 @@ public class Dialog : MonoBehaviour
 
     [SerializeField]
     private GameObject continueButton;
+
+    [SerializeField]
+    private GameObject restartButton;
 
     bool isShown = false;
 
@@ -40,25 +53,31 @@ public class Dialog : MonoBehaviour
         isShown = true;
         if (dialogType == DialogType.Fail)
         {
+            restartButton.SetActive(false);
             continueButton.SetActive(false);
             tryAgainButton.SetActive(true);
             txtMessage.text = "You failed to smoke signal :(";
             txtTitle.text = "Oh no!";
+            imgForeGround.sprite = failSprite;
         }
         else if (dialogType == DialogType.Success)
         {
+            restartButton.SetActive(true);
             tryAgainButton.SetActive(false);
             continueButton.SetActive(false);
             txtMessage.text = "You failed to lose :)";
             txtTitle.text = "WIN!";
+            imgForeGround.sprite = successSprite;
         }
         else if (dialogType == DialogType.Pause)
         {
+            restartButton.SetActive(false);
             tryAgainButton.SetActive(false);
             continueButton.SetActive(true);
             txtMessage.text = "Game is paused. Press esc to continue";
             txtTitle.text = "Paused";
-        }
+            imgForeGround.sprite = pauseSprite;
+        } 
         animator.SetTrigger("Show");
     }
 
@@ -81,5 +100,10 @@ public class Dialog : MonoBehaviour
     public void Continue()
     {
         WorldManager.main.Continue();
+    }
+
+    public void Restart()
+    {
+        WorldManager.main.Restart();
     }
 }

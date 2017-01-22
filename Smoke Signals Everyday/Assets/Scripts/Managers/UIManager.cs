@@ -8,7 +8,8 @@ public enum DialogType
     None,
     Fail,
     Success,
-    Pause
+    Pause,
+    TheEnd
 }
 
 public class UIManager : MonoBehaviour {
