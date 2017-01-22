@@ -2,6 +2,7 @@
 // Project: Smoke Signals Everyday
 // Author : bradur
 
+using System;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour {
@@ -12,6 +13,10 @@ public class ScoreManager : MonoBehaviour {
     [SerializeField]
     [Range(1, 10)]
     private int scorePerTick = 1;
+
+    [SerializeField]
+    [Range(0, 100)]
+    private int winScoreLimit = 75;
 
     [SerializeField]
     private int magicOneHundredPercentScore = 28;
@@ -36,6 +41,16 @@ public class ScoreManager : MonoBehaviour {
     public int GetScorePercentage()
     {
         return (int)(currentWaveScore * 1.0f / magicOneHundredPercentScore * 1.0f * 100);
+    }
+
+    public bool CheckFailure()
+    {
+        if(GetScorePercentage() > winScoreLimit)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     public void ResetScore()

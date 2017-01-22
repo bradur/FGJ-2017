@@ -29,6 +29,12 @@ public class DeleteCollider : MonoBehaviour {
 
             Debug.Log(ScoreManager.main.GetScore());
             UIManager.main.ShowScore(ScoreManager.main.GetScorePercentage());
+            if (ScoreManager.main.CheckFailure())
+            {
+                UIManager.main.ShowDialog(DialogType.Fail);
+                Time.timeScale = 0f;
+            }
+
             ScoreManager.main.ResetScore();
 
             PuffPool.main.DestroyPuff(puffWave);

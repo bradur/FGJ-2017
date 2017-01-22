@@ -51,6 +51,8 @@ public class WorldManager : MonoBehaviour
     {
         // retry current level
         LevelManager.main.RestartLevel();
+        Time.timeScale = 1f;
+        UIManager.main.HideDialog();
     }
 
     public void StopPlayerHorizontal()

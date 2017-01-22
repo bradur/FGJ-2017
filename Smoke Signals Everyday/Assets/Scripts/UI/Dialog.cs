@@ -42,11 +42,22 @@ public class Dialog : MonoBehaviour
         {
             continueButton.SetActive(false);
             tryAgainButton.SetActive(true);
+            txtMessage.text = "You failed to smoke signal :(";
+            txtTitle.text = "Oh no!";
         }
-        else if (dialogType == DialogType.Success || dialogType == DialogType.Pause)
+        else if (dialogType == DialogType.Success)
         {
             tryAgainButton.SetActive(false);
             continueButton.SetActive(true);
+            txtMessage.text = "You failed to lose :)";
+            txtTitle.text = "WIN!";
+        }
+        else if (dialogType == DialogType.Pause)
+        {
+            tryAgainButton.SetActive(false);
+            continueButton.SetActive(true);
+            txtMessage.text = "Game is paused. Press esc to continue";
+            txtTitle.text = "Paused";
         }
         animator.SetTrigger("Show");
     }
