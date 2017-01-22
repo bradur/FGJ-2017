@@ -49,36 +49,40 @@ public class Dialog : MonoBehaviour
 
     private void Update()
     {
-        if (isFail) {
-            if (Input.GetKeyUp(KeyCode.R))
-            {
-                Retry();
-            }
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                Application.Quit();
-            }
-        }
-        if (isSuccess)
+        if (isShown)
         {
-            if (Input.GetKeyUp(KeyCode.R))
+            if (isFail)
             {
-                Restart();
+                if (Input.GetKeyUp(KeyCode.R))
+                {
+                    Retry();
+                }
+                if (Input.GetKeyUp(KeyCode.Q))
+                {
+                    Application.Quit();
+                }
             }
-            if (Input.GetKeyUp(KeyCode.Q))
+            if (isSuccess)
             {
-                Application.Quit();
+                if (Input.GetKeyUp(KeyCode.R))
+                {
+                    Restart();
+                }
+                if (Input.GetKeyUp(KeyCode.Q))
+                {
+                    Application.Quit();
+                }
             }
-        }
-        if (isPause)
-        {
-            if (Input.GetKeyUp(KeyCode.R))
+            if (isPause)
             {
-                Retry();
-            }
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                Application.Quit();
+                if (Input.GetKeyUp(KeyCode.R))
+                {
+                    Retry();
+                }
+                if (Input.GetKeyUp(KeyCode.Q))
+                {
+                    Application.Quit();
+                }
             }
         }
     }
@@ -126,7 +130,7 @@ public class Dialog : MonoBehaviour
             txtMessage.text = "Game is paused. Press esc to continue";
             txtTitle.text = "Paused";
             imgForeGround.sprite = pauseSprite;
-        } 
+        }
         animator.SetTrigger("Show");
     }
 
