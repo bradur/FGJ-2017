@@ -152,7 +152,7 @@ public class LevelManager : MonoBehaviour {
     public void DeletedPuffWave()
     {
         puffAnimRenderer.GetComponent<Animator>().enabled = true;
-        if (lastPuffWave)
+        if (lastPuffWave && !ScoreManager.main.CheckFailure())
         {
             LoadNextLevel();
         }

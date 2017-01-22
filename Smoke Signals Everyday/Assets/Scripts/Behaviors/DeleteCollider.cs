@@ -23,10 +23,6 @@ public class DeleteCollider : MonoBehaviour {
             PuffWave puffWave = waveObject.parent.GetComponent<PuffWave>();
             puffWave.PuffAnimOut();
 
-            LevelManager.main.DeletedPuffWave();
-
-            WorldManager.main.StopPlayerHorizontal();
-
             Debug.Log(ScoreManager.main.GetScore());
             UIManager.main.ShowScore(ScoreManager.main.GetScorePercentage());
             if (ScoreManager.main.CheckFailure())
@@ -36,6 +32,10 @@ public class DeleteCollider : MonoBehaviour {
             }
 
             ScoreManager.main.ResetScore();
+
+            LevelManager.main.DeletedPuffWave();
+
+            WorldManager.main.StopPlayerHorizontal();
 
             PuffPool.main.DestroyPuff(puffWave);
             WorldManager.main.ClearPlayerTrail();
