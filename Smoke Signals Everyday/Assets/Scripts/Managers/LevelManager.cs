@@ -91,7 +91,6 @@ public class LevelManager : MonoBehaviour {
         if (puffAnimRenderer == null) return;
 
         puffAnimRenderer.GetComponent<Animator>().enabled = false;
-        Debug.Log("Alpha: "+alpha);
         puffAnimRenderer.color = new Color(puffAnimRenderer.color.r, puffAnimRenderer.color.g, puffAnimRenderer.color.b, alpha);
     }
 
@@ -112,7 +111,7 @@ public class LevelManager : MonoBehaviour {
         CleanUp();
 
         currentLevel = levels[0];
-        Debug.Log("Level changed to: "+ currentLevel.levelNumber);
+
         //only add a level that's not there yet
         if (!previousLevels.Select(x => x.levelNumber).Contains(levels[0].levelNumber))
         {
@@ -163,7 +162,6 @@ public class LevelManager : MonoBehaviour {
     {
         if (oldAnims != null)
         {
-            Debug.Log("Old anims removed: " + oldAnims.Count);
             for (int i = 0; i < oldAnims.Count; i++)
             {
                 oldAnims[i].gameObject.SetActive(false);
@@ -183,7 +181,6 @@ public class LevelManager : MonoBehaviour {
 
         if(oldAnims != null)
         {
-            Debug.Log("Old anims removed: " + oldAnims.Count);
             for(int i = 0; i < oldAnims.Count; i++)
             {
                 oldAnims[i].gameObject.SetActive(false);
@@ -196,7 +193,6 @@ public class LevelManager : MonoBehaviour {
 
         if (allLevelObjs != null)
         {
-            Debug.Log("Level obs removed: " + allLevelObjs.Count);
             for (int i = 0; i < allLevelObjs.Count; i++)
             {
                 PuffWave obj = allLevelObjs[i];
