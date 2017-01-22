@@ -30,15 +30,16 @@ public class DeleteCollider : MonoBehaviour {
             UIManager.main.ShowScore(ScoreManager.main.GetScorePercentage());
             if (ScoreManager.main.CheckFailure())
             {
+                fizzleObject.GetComponent<Animator>().SetTrigger("Fizzle");
                 UIManager.main.ShowDialog(DialogType.Fail);
                 fizzleObject.SetActive(true);
                 LevelManager.main.DeleteAnims();
                 Time.timeScale = 0f;
             }
 
-            ScoreManager.main.ResetScore();
-
             LevelManager.main.DeletedPuffWave();
+
+            ScoreManager.main.ResetScore();
 
             WorldManager.main.StopPlayerHorizontal();
 

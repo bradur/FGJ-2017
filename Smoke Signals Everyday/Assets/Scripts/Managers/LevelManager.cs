@@ -169,6 +169,7 @@ public class LevelManager : MonoBehaviour {
                 oldAnims[i].gameObject.SetActive(false);
                 Destroy(oldAnims[i].gameObject);
             }
+            oldAnims = new List<AnimPuff>();
         }
     }
 
@@ -188,6 +189,7 @@ public class LevelManager : MonoBehaviour {
                 oldAnims[i].gameObject.SetActive(false);
                 Destroy(oldAnims[i].gameObject);
             }
+            oldAnims = new List<AnimPuff>();
         }
 
         oldAnims = new List<AnimPuff>();
