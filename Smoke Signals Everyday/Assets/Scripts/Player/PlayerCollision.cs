@@ -17,10 +17,19 @@ public class PlayerCollision : MonoBehaviour
     private float addScoreInterval = 0.2f;
     private float addScoreTimer = 0f;
 
+    [SerializeField]
+    private AudioSource waveHitSound;
+
     private void OnTriggerEnter2D(Collider2D collider2d)
     {
         if (collider2d.tag == "Wave")
         {
+            if (!waveHitSound.isPlaying) { 
+                waveHitSound.Play();
+            } else
+            {
+                waveHitSound.UnPause();
+            }
             hitParticle.SetActive(true);
             playerHitsWave = true;
             collider2d.GetComponent<WaveCollision>().BallEnter();
@@ -31,6 +40,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collider2d.tag == "Wave")
         {
+            waveHitSound.Pause();
             hitParticle.SetActive(false);
             playerHitsWave = false;
             addScoreTimer = 0f;
