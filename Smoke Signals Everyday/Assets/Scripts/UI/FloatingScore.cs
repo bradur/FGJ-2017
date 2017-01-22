@@ -27,7 +27,7 @@ public class FloatingScore : MonoBehaviour {
         {
             score = 100;
         }
-        txtScore.text = string.Format("{0}%", score.ToString());
+        txtScore.text = string.Format("{0}%!", score.ToString());
         animator.SetTrigger("Show");
 
     }
