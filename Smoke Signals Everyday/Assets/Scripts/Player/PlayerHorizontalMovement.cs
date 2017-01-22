@@ -38,6 +38,7 @@ public class PlayerHorizontalMovement : MonoBehaviour
     public void StopMoving()
     {
         isMoving = false;
+        rb2d.velocity = Vector2.zero;
         trail.gameObject.SetActive(false);
     }
 

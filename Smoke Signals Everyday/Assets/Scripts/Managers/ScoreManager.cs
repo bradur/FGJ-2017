@@ -21,6 +21,11 @@ public class ScoreManager : MonoBehaviour {
         main = this;
     }
 
+    public int GetScore()
+    {
+        return currentWaveScore;
+    }
+
     public void AddScoreFromWave()
     {
         currentWaveScore += scorePerTick;

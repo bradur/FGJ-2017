@@ -33,6 +33,7 @@ public class PlayerCollision : MonoBehaviour
         {
             hitParticle.SetActive(false);
             playerHitsWave = false;
+            addScoreTimer = 0f;
             collider2d.GetComponent<WaveCollision>().BallExit();
         }
     }

@@ -25,6 +25,9 @@ public class DeleteCollider : MonoBehaviour {
 
             LevelManager.main.DeletedPuffWave();
 
+            WorldManager.main.StopPlayerHorizontal();
+
+            Debug.Log(ScoreManager.main.GetScore());
             UIManager.main.ShowScore(ScoreManager.main.GetScorePercentage());
             ScoreManager.main.ResetScore();
 

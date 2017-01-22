@@ -52,6 +52,11 @@ public class WorldManager : MonoBehaviour
         // retry current level
     }
 
+    public void StopPlayerHorizontal()
+    {
+        player.StopMoving();
+    }
+
     public void SetPlayerMovement(bool letMove)
     {
         player.StartMoving();
