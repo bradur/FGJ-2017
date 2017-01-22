@@ -1029,6 +1029,9 @@ MonoBehaviour:
   verticalSpeed: 10
   nitroSpeed: 25.3
   trail: {fileID: 1678197310}
+  spriteRenderer: {fileID: 535766931}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  nitroColor: {r: 0, g: 1, b: 0.9586208, a: 1}
 --- !u!212 &535766931
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -35,6 +35,13 @@ public class PlayerController : MonoBehaviour
     private TrailRenderer trail;
     public TrailRenderer Trail { get { return trail; } }
 
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private Color normalColor;
+    [SerializeField]
+    private Color nitroColor;
+
     void Start()
     {
         moveUp = KeyManager.main.GetKey(Action.MoveUp);
@@ -54,9 +61,11 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetKey(nitroKey))
                 {
                     rb2d.AddForce(new Vector2(0, nitroSpeed));
+                    spriteRenderer.color = nitroColor;
                 } else
                 {
                     rb2d.AddForce(new Vector2(0, verticalSpeed));
+                    spriteRenderer.color = normalColor;
                 }
                 
             }
@@ -65,10 +74,12 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetKey(nitroKey))
                 {
                     rb2d.AddForce(new Vector2(0, -nitroSpeed));
+                    spriteRenderer.color = nitroColor;
                 }
                 else
                 {
                     rb2d.AddForce(new Vector2(0, -verticalSpeed));
+                    spriteRenderer.color = normalColor;
                 }
             }
 
