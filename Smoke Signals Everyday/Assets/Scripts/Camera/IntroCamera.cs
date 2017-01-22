@@ -16,11 +16,13 @@ public class IntroCamera : MonoBehaviour {
     {
         Time.timeScale = 0f;
         otherCamera.enabled = false;
+        otherCamera.GetComponent<AudioListener>().enabled = false;
     }
 
     public void Kill()
     {
         otherCamera.enabled = true;
+        otherCamera.GetComponent<AudioListener>().enabled = true; ;
         Time.timeScale = 1f;
         Destroy(gameObject);
     }
