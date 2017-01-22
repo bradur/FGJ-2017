@@ -158,6 +158,20 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
+    //delete puff animations
+    public void DeleteAnims()
+    {
+        if (oldAnims != null)
+        {
+            Debug.Log("Old anims removed: " + oldAnims.Count);
+            for (int i = 0; i < oldAnims.Count; i++)
+            {
+                oldAnims[i].gameObject.SetActive(false);
+                Destroy(oldAnims[i].gameObject);
+            }
+        }
+    }
+
     //just in case, clean up if anything was left from the previous level
     private void CleanUp()
     {

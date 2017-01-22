@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DeleteCollider : MonoBehaviour {
 
+    [SerializeField]
+    private GameObject fizzleObject;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -28,6 +31,8 @@ public class DeleteCollider : MonoBehaviour {
             if (ScoreManager.main.CheckFailure())
             {
                 UIManager.main.ShowDialog(DialogType.Fail);
+                fizzleObject.SetActive(true);
+                LevelManager.main.DeleteAnims();
                 Time.timeScale = 0f;
             }
 

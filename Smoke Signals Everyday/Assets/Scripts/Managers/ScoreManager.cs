@@ -21,6 +21,9 @@ public class ScoreManager : MonoBehaviour {
     [SerializeField]
     private int magicOneHundredPercentScore = 28;
 
+    [SerializeField]
+    private GameObject fizzleObject;
+
     void Awake()
     {
         main = this;
