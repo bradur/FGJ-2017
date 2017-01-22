@@ -48,7 +48,7 @@ public class Dialog : MonoBehaviour
         else if (dialogType == DialogType.Success)
         {
             tryAgainButton.SetActive(false);
-            continueButton.SetActive(true);
+            continueButton.SetActive(false);
             txtMessage.text = "You failed to lose :)";
             txtTitle.text = "WIN!";
         }

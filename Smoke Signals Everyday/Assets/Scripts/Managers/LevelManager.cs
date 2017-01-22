@@ -95,11 +95,17 @@ public class LevelManager : MonoBehaviour {
         puffAnimRenderer.color = new Color(puffAnimRenderer.color.r, puffAnimRenderer.color.g, puffAnimRenderer.color.b, alpha);
     }
 
+    public void GameEnd()
+    {
+        UIManager.main.ShowDialog(DialogType.Success);
+        Time.timeScale = 0f;
+    }
+
     public void LoadNextLevel()
     {
         if(levels.Count == 0)
         {
-            //TODO: trigger game end here or before
+            GameEnd();
             return;
         }
 
