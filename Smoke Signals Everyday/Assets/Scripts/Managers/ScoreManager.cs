@@ -25,6 +25,7 @@ public class ScoreManager : MonoBehaviour {
     {
         currentWaveScore += scorePerTick;
         //UIManager.main.SetScore(currentWaveScore);
+        LevelManager.main.SetPuffAlpha(currentWaveScore * 1.0f / magicOneHundredPercentScore);
     }
 
     public int GetScorePercentage()
