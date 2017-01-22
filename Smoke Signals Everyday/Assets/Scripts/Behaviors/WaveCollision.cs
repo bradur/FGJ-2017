@@ -9,7 +9,6 @@ public class WaveCollision : MonoBehaviour {
     public void BallEnter()
     {
         Animator animator = GetComponentInChildren<Animator>();
-        Debug.Log(animator.name);
         animator.SetTrigger("Show");
     }
 
