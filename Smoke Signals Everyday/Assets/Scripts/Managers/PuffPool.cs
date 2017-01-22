@@ -16,7 +16,7 @@ public class PuffPool : MonoBehaviour {
     private Transform worldContainer;
 
     private List<PuffWave> pool;
-    private int maxPool = 25;
+    private int maxPool = 60;
     
     public static PuffPool main;
 
@@ -86,7 +86,7 @@ public class PuffPool : MonoBehaviour {
 
     public void DestroyPuff(PuffWave deletedPuff)
     {
-        if (deletedPuff == null) return;
+        if (deletedPuff == null || ! deletedPuff.gameObject.activeSelf) return;
 
         Destroy(deletedPuff.LittleWave.gameObject);
 

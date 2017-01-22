@@ -51,4 +51,10 @@ public class PlayerCollision : MonoBehaviour
         }
         
     }
+
+    public void ResetPlayer()
+    {
+        addScoreTimer = 0f;
+        hitParticle.SetActive(false);
+    }
 }

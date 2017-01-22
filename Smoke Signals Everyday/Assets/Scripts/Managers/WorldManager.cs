@@ -50,6 +50,7 @@ public class WorldManager : MonoBehaviour
     public void Retry()
     {
         // retry current level
+        LevelManager.main.RestartLevel();
     }
 
     public void StopPlayerHorizontal()
@@ -101,5 +102,10 @@ public class WorldManager : MonoBehaviour
     public Vector3 GetPlayerPos()
     {
         return player.transform.position;
+    }
+
+    public void ResetPlayer()
+    {
+        playerContoller.Reset();
     }
 }

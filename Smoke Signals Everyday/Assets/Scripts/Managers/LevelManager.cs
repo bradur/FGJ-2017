@@ -7,6 +7,8 @@ public class LevelManager : MonoBehaviour {
 
     [SerializeField]
     private List<Level> levels;
+    private List<Level> previousLevels;
+    private List<AnimPuff> oldAnims;
 
     [SerializeField]
     private Transform puffPlace;
@@ -15,6 +17,7 @@ public class LevelManager : MonoBehaviour {
     private AnimPuff animPuff;
 
     private List<PuffWave> levelObjs;
+    private List<PuffWave> allLevelObjs;
 
     Level currentLevel = null;
 
@@ -32,6 +35,9 @@ public class LevelManager : MonoBehaviour {
     void Start () {
         levelObjs = new List<PuffWave>();
         animPuff = Resources.Load<AnimPuff>("AnimPuff");
+        allLevelObjs = new List<PuffWave>();
+        previousLevels = new List<Level>();
+        oldAnims = new List<AnimPuff>();
     }
 	
 	// Update is called once per frame
@@ -49,6 +55,7 @@ public class LevelManager : MonoBehaviour {
         {
             //previous puff sprite
             AnimPuff anim = Instantiate(animPuff, puffPlace) as AnimPuff;
+            oldAnims.Add(anim);
             //super magic bug slaying numbers
             anim.transform.position = puffPlace.position + new Vector3(-3.13f, 1.34f, 0);
 
@@ -81,6 +88,8 @@ public class LevelManager : MonoBehaviour {
 
     public void SetPuffAlpha(float alpha)
     {
+        if (puffAnimRenderer == null) return;
+
         puffAnimRenderer.GetComponent<Animator>().enabled = false;
         Debug.Log("Alpha: "+alpha);
         puffAnimRenderer.color = new Color(puffAnimRenderer.color.r, puffAnimRenderer.color.g, puffAnimRenderer.color.b, alpha);
@@ -98,6 +107,11 @@ public class LevelManager : MonoBehaviour {
 
         currentLevel = levels[0];
         Debug.Log("Level changed to: "+ currentLevel.levelNumber);
+        //only add a level that's not there yet
+        if (!previousLevels.Select(x => x.levelNumber).Contains(levels[0].levelNumber))
+        {
+            previousLevels.Add(levels[0]);
+        }
         levels.RemoveAt(0);
 
         //var x = levelObjs[i].transform.position.x;
@@ -112,7 +126,21 @@ public class LevelManager : MonoBehaviour {
             levelObjs[i].transform.position = new Vector3(playerPos.x + 15f, 0, 0);
         }
 
+        allLevelObjs.AddRange(levelObjs);
+        previousLevels.Last().PuffWaveIds = currentLevel.PuffWaveIds;
+
         NextObject();
+    }
+
+    public void RestartLevel()
+    {
+        ScoreManager.main.ResetScore();
+        WorldManager.main.DisablePlayerTrail();
+        levels.Insert(0, previousLevels.Last());
+        WorldManager.main.ResetPlayer();
+        currentPuffWave = null;
+        CleanUp();
+        LoadNextLevel();
     }
 
     public void DeletedPuffWave()
@@ -127,7 +155,39 @@ public class LevelManager : MonoBehaviour {
     //just in case, clean up if anything was left from the previous level
     private void CleanUp()
     {
-        if (levelObjs.Count > 0)
+        if(currentPuffWave != null)
+        {
+            PuffPool.main.DestroyPuff(currentPuffWave);
+        }
+
+        if(oldAnims != null)
+        {
+            Debug.Log("Old anims removed: " + oldAnims.Count);
+            for(int i = 0; i < oldAnims.Count; i++)
+            {
+                oldAnims[i].gameObject.SetActive(false);
+                Destroy(oldAnims[i].gameObject);
+            }
+        }
+
+        oldAnims = new List<AnimPuff>();
+
+        if (allLevelObjs != null)
+        {
+            Debug.Log("Level obs removed: " + allLevelObjs.Count);
+            for (int i = 0; i < allLevelObjs.Count; i++)
+            {
+                PuffWave obj = allLevelObjs[i];
+                if (obj != null)
+                {
+                    PuffPool.main.DestroyPuff(obj);
+                }
+            }
+
+            allLevelObjs = new List<PuffWave>();
+        }
+
+        if (levelObjs != null)
         {
             for (int i = 0; i < levelObjs.Count; i++)
             {

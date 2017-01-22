@@ -75,4 +75,9 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    public void Reset()
+    {
+        BroadcastMessage("ResetPlayer", null);
+    }
 }
