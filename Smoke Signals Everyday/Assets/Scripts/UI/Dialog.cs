@@ -43,6 +43,46 @@ public class Dialog : MonoBehaviour
 
     bool isShown = false;
 
+    bool isFail = false;
+    bool isSuccess = false;
+    bool isPause = false;
+
+    private void Update()
+    {
+        if (isFail) {
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                Retry();
+            }
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                Application.Quit();
+            }
+        }
+        if (isSuccess)
+        {
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                Restart();
+            }
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                Application.Quit();
+            }
+        }
+        if (isPause)
+        {
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                Retry();
+            }
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                Application.Quit();
+            }
+        }
+    }
+
     public void Show(DialogType dialogType)
     {
         gameObject.SetActive(true);
@@ -53,6 +93,9 @@ public class Dialog : MonoBehaviour
         isShown = true;
         if (dialogType == DialogType.Fail)
         {
+            isFail = true;
+            isSuccess = false;
+            isPause = false;
             restartButton.SetActive(false);
             continueButton.SetActive(false);
             tryAgainButton.SetActive(true);
@@ -62,6 +105,9 @@ public class Dialog : MonoBehaviour
         }
         else if (dialogType == DialogType.Success)
         {
+            isFail = false;
+            isSuccess = true;
+            isPause = false;
             restartButton.SetActive(true);
             tryAgainButton.SetActive(false);
             continueButton.SetActive(false);
@@ -71,6 +117,9 @@ public class Dialog : MonoBehaviour
         }
         else if (dialogType == DialogType.Pause)
         {
+            isFail = false;
+            isSuccess = false;
+            isPause = true;
             restartButton.SetActive(false);
             tryAgainButton.SetActive(false);
             continueButton.SetActive(true);

@@ -417,7 +417,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EXIT
+  m_Text: EXIT (Q)
 --- !u!222 &216608149
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1363,7 +1363,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300022, guid: 22b0100f276480143a84173a400efa3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 17a8c4aa43096164ba77608d9ea1ae92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1375,7 +1375,7 @@ Transform:
   m_GameObject: {fileID: 535766929}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.11, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 1678197309}
   - {fileID: 1517231395}
@@ -1878,7 +1878,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TRY AGAIN
+  m_Text: TRY AGAIN (R)
 --- !u!222 &659547396
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8079,7 +8079,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RESTART
+  m_Text: RESTART (R)
 --- !u!222 &1781013066
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8221,7 +8221,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CONTINUE
+  m_Text: CONTINUE (Esc)
 --- !u!222 &1811197678
 CanvasRenderer:
   m_ObjectHideFlags: 0
