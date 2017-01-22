@@ -31,6 +31,7 @@ public class PlayerHorizontalMovement : MonoBehaviour
     public void StartMoving()
     {
         isMoving = true;
+        trail.enabled = true;
         trail.Clear();
         trail.gameObject.SetActive(true);
     }

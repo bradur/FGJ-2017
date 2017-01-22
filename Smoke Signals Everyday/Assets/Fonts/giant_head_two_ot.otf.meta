@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 522ee1563e2a0b749b0cc33ae03eb16e
+timeCreated: 1485048043
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Giant Head Two OT
+  fontNames:
+  - Giant Head Two OT
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

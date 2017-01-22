@@ -3,6 +3,7 @@
 // Author : bradur
 
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -28,18 +29,38 @@ public class PlayerController : MonoBehaviour
     private KeyCode moveDown;
     private KeyCode nitroKey;
 
-    private bool allowMovement = false;
+    private bool allowMovement = true;
     public bool AllowMovement { get { return allowMovement; } set { allowMovement = value; } }
 
     [SerializeField]
     private TrailRenderer trail;
     public TrailRenderer Trail { get { return trail; } }
 
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private Color normalColor;
+    [SerializeField]
+    private Color nitroColor;
+
+    [SerializeField]
+    private Image imgSpaceIndicator;
+
+    [SerializeField]
+    private Image imgUpArrowIndicator;
+    [SerializeField]
+    private Image imgDownArrowIndicator;
+    [SerializeField]
+    private Color indicatorColor;
+    [SerializeField]
+    private Color originalIndicatorColor;
+
     void Start()
     {
         moveUp = KeyManager.main.GetKey(Action.MoveUp);
         moveDown = KeyManager.main.GetKey(Action.MoveDown);
         nitroKey = KeyManager.main.GetKey(Action.Nitro);
+        trail.enabled = false;
     }
 
     void Update()
@@ -51,27 +72,46 @@ public class PlayerController : MonoBehaviour
             rb2d.velocity = new Vector3(rb2d.velocity.x, verticalAxis * speedForward, 0f);*/
             if (Input.GetKey(moveUp))
             {
+                imgUpArrowIndicator.color = indicatorColor;
                 if (Input.GetKey(nitroKey))
                 {
+                    imgSpaceIndicator.color = indicatorColor;
                     rb2d.AddForce(new Vector2(0, nitroSpeed));
-                } else
+                    spriteRenderer.color = nitroColor;
+                }
+                else
                 {
                     rb2d.AddForce(new Vector2(0, verticalSpeed));
+                    spriteRenderer.color = normalColor;
                 }
-                
+            }
+            if (Input.GetKeyUp(moveUp))
+            {
+                imgUpArrowIndicator.color = originalIndicatorColor;
             }
             if (Input.GetKey(moveDown))
             {
+                imgDownArrowIndicator.color = indicatorColor;
                 if (Input.GetKey(nitroKey))
                 {
+                    imgSpaceIndicator.color = indicatorColor;
                     rb2d.AddForce(new Vector2(0, -nitroSpeed));
+                    spriteRenderer.color = nitroColor;
                 }
                 else
                 {
                     rb2d.AddForce(new Vector2(0, -verticalSpeed));
+                    spriteRenderer.color = normalColor;
                 }
             }
-
+            if (Input.GetKeyUp(moveDown))
+            {
+                imgDownArrowIndicator.color = originalIndicatorColor;
+            }
+            if (Input.GetKeyUp(nitroKey))
+            {
+                imgSpaceIndicator.color = originalIndicatorColor;
+            }
         }
 
     }

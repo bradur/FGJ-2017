@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0c445160b34e728408aa343f3c5aea0e
+timeCreated: 1485048043
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Giant Head OT
+  fontNames:
+  - Giant Head OT
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
